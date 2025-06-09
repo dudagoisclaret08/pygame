@@ -1,3 +1,30 @@
+import pygame
+pygame.init()
+tela=pygame.display.set_mode((400,300))
+fonte=pygame.font.SysFont(None,36)
+
+def desenhar_botao(texto,posicao,cor):
+    texto_rende = fonte.render(texto,True,(0,0,0))
+    retangulo= texto_rende.get_rect(center=posicao)
+    pygame.draw.rect(tela,cor,retangulo.inflate(20,20))
+    tela.blit(texto_rende,retangulo)
+    return retangulo
+rodando = True
+while rodando: 
+    for evento in pygame.event.get():
+        if evento.type== pygame.QUIT:
+            rodando= False
+        if evento.type == pygame.MOUSEBUTTONDOWN:
+            if botao.collidepoint(evento.pos):
+                print ("botao clicando!")
+
+    tela.fill((220,220,220))
+    botao = desenhar_botao("clique aqui",(200,150),(100,200,100))
+    pygame.display.update()
+pygame.quit()
+
+
+
 
 import pygame
 import time
